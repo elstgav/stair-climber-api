@@ -50,4 +50,4 @@ test:
 production:
   <<: *default
   database: stair_climber_api_production
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['CLEARDB_DATABASE_URL'] %>
