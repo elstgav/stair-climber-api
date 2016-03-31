@@ -24,3 +24,5 @@ module StairClimberApi
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
+
+require File.expand_path('../../lib/date_formats', __FILE__)
