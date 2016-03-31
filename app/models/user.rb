@@ -27,11 +27,12 @@ class User < ActiveRecord::Base
 
   def as_json(_options = {})
     {
-      full_name: full_name,
-      first_name: first_name,
-      last_name: last_name,
-      email: email,
-      home_floor: home_floor,
+      id:            id,
+      full_name:     full_name,
+      first_name:    first_name,
+      last_name:     last_name,
+      email:         email,
+      home_floor:    home_floor,
       total_flights: total_flights
     }
   end
