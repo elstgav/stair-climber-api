@@ -1,10 +1,11 @@
 class ClimbsController < ApplicationController
+  include DateRange
+
+  before_action :set_climbs, only: [:index]
   before_action :set_climb, only: [:show, :update, :destroy]
 
   # GET /climbs
   def index
-    @climbs = Climb.all
-
     render json: @climbs
   end
 
@@ -46,6 +47,14 @@ class ClimbsController < ApplicationController
 
   def set_climb
     @climb = Climb.find(params[:id])
+  end
+
+  def set_climbs
+    @climbs ||= begin
+      user_id = params[:user_id]
+      climbs = user_id.present? ? Climb.user_flights(user_id, date_range) : Climb.all
+      climbs.order('datetime DESC')
+    end
   end
 
   def climb_params
