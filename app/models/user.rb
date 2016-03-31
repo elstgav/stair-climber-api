@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
   has_many :climbs, dependent: :destroy
 
   class << self
-    def with_total_flights(daterange = nil)
+    def with_total_flights(date_range = nil)
       users = joins(:climbs)
-      users = users.where(climbs: { datetime: daterange }) if daterange.present?
+      users = users.where(climbs: { datetime: date_range }) if date_range.present?
 
       users
         .select('users.*, sum(climbs.flights) as total_flights')
