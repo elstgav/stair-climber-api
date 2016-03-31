@@ -10,6 +10,13 @@ Rails.application.routes.draw do
     root to: 'leaderboard#index', as: :leaderboard
 
     get(
+      '/:date_range',
+      to:         'leaderboard#index',
+      as:         :leaderboard_date_range,
+      date_range: DateFormats::ISO_DATETIME_RANGE
+    )
+
+    get(
       '/:year',
       to:   'leaderboard#index',
       as:   :leaderboard_annual,
