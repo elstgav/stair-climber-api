@@ -20,4 +20,19 @@ class User < ActiveRecord::Base
         .group('users.id')
     end
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  def as_json(_options = {})
+    {
+      full_name: full_name,
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      home_floor: home_floor,
+      total_flights: total_flights
+    }
+  end
 end
