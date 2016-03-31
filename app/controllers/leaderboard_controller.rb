@@ -1,13 +1,9 @@
 class LeaderboardController < ApplicationController
   include DateRange
 
-  before_action :set_leaderboard, only: [:index, :show]
+  before_action :set_leaderboard, only: [:index]
 
   def index
-    render json: @users
-  end
-
-  def show
     render json: @users
   end
 

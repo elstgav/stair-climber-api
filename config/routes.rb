@@ -6,29 +6,31 @@ Rails.application.routes.draw do
     resources :climbs, only: :index
   end
 
-  get '/leaderboard', to: 'leaderboard#index'
+  scope '/leaderboard' do
+    root to: 'leaderboard#index', as: :leaderboard
 
-  get(
-    '/leaderboard/:year',
-    to:   'leaderboard#show',
-    as:   :annual_leaderboard,
-    year: /\d{4}/
-  )
+    get(
+      '/:year',
+      to:   'leaderboard#index',
+      as:   :leaderboard_annual,
+      year: DateFormats::YEAR
+    )
 
-  get(
-    '/leaderboard/:year/:month',
-    to:    'leaderboard#show',
-    as:    :monthly_leaderboard,
-    year:  /\d{4}/,
-    month: /\d{1,2}/
-  )
+    get(
+      '/:year/:month',
+      to:    'leaderboard#index',
+      as:    :leaderboard_monthly,
+      year:  DateFormats::YEAR,
+      month: DateFormats::MONTH
+    )
 
-  get(
-    '/leaderboard/:year/:month/:day',
-    to:    'leaderboard#show',
-    as:    :daily_leaderboard,
-    year:  /\d{4}/,
-    month: /\d{1,2}/,
-    day:   /\d{1,2}/
-  )
+    get(
+      '/:year/:month/:day',
+      to:    'leaderboard#index',
+      as:    :leaderboard_daily,
+      year:  DateFormats::YEAR,
+      month: DateFormats::MONTH,
+      day:   DateFormats::DAY
+    )
+  end
 end
