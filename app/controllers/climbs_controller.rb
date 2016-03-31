@@ -58,6 +58,7 @@ class ClimbsController < ApplicationController
   end
 
   def climb_params
+    params[:climb][:user_id] ||= params[:user_id]
     params.require(:climb).permit(:datetime, :flights, :user_id)
   end
 end
