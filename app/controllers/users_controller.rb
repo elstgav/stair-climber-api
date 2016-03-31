@@ -1,15 +1,16 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:update, :destroy]
 
   # GET /users
   def index
-    @users = User.all
+    @users = User.all.with_total_flights
 
     render json: @users
   end
 
   # GET /users/1
   def show
+    @user = User.with_total_flights.find(params[:id])
     render json: @user
   end
 
