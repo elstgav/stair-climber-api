@@ -2,6 +2,11 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :email, uniqueness: true, presence: true
+  validates :password, confirmation: true, presence: true
+  validates :password_confirmation, presence: true
+  validates :firstname, presence: true
+  validates :lastname, presence: true
+  validates :home_floor, numericality: { only_integer: true, greater_than: 0 }
 
   has_many :climbs, dependent: :destroy
 
