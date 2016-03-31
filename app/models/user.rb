@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   class << self
     def with_total_flights(date_range = nil)
-      users = joins(:climbs)
+      users = joins('LEFT JOIN climbs ON climbs.user_id = users.id')
       users = users.where(climbs: { datetime: date_range }) if date_range.present?
 
       users
