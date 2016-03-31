@@ -14,23 +14,23 @@
 ActiveRecord::Schema.define(version: 20160330221116) do
 
   create_table "climbs", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",    limit: 4
     t.datetime "datetime"
-    t.integer  "flights"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "flights",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.string   "firstname"
-    t.string   "lastname"
-    t.integer  "home_floor"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "email",           limit: 255
+    t.string   "password_digest", limit: 255
+    t.string   "firstname",       limit: 255
+    t.string   "lastname",        limit: 255
+    t.integer  "home_floor",      limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end
