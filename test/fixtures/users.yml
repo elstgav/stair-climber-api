@@ -3,13 +3,13 @@
 one:
   email: jane.doe@avvo.com
   password_digest: <%= BCrypt::Password.create('secret') %>
-  firstname: Jane
-  lastname: Doe
+  first_name: Jane
+  last_name: Doe
   homefloor: 14
 
 two:
   email: john.smith@avvo.com
   password_digest: <%= BCrypt::Password.create('secret') %>
-  firstname: John
-  lastname: Smith
+  first_name: John
+  last_name: Smith
   homefloor: 15

@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true, presence: true
   validates :password, confirmation: true, presence: true
   validates :password_confirmation, presence: true
-  validates :firstname, presence: true
-  validates :lastname, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :home_floor, numericality: { only_integer: true, greater_than: 0 }
 
   has_many :climbs, dependent: :destroy
