@@ -2,7 +2,6 @@ class ClimbsController < ApplicationController
   before_action :set_climb, only: [:show, :update, :destroy]
 
   # GET /climbs
-  # GET /climbs.json
   def index
     @climbs = Climb.all
 
@@ -10,13 +9,11 @@ class ClimbsController < ApplicationController
   end
 
   # GET /climbs/1
-  # GET /climbs/1.json
   def show
     render json: @climb
   end
 
   # POST /climbs
-  # POST /climbs.json
   def create
     @climb = Climb.new(climb_params)
 
@@ -28,7 +25,6 @@ class ClimbsController < ApplicationController
   end
 
   # PATCH/PUT /climbs/1
-  # PATCH/PUT /climbs/1.json
   def update
     @climb = Climb.find(params[:id])
 
@@ -40,7 +36,6 @@ class ClimbsController < ApplicationController
   end
 
   # DELETE /climbs/1
-  # DELETE /climbs/1.json
   def destroy
     @climb.destroy
 
