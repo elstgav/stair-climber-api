@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :climbs, except: [:new, :edit]
   resources :users,  except: [:new, :edit] do
-    resources :climbs, except: [:new, :edit]
+    resources :climbs, only: :index
   end
 
   get '/leaderboard', to: 'leaderboard#index'
