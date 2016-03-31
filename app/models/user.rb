@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
       users
         .select('users.*, sum(climbs.flights) as total_flights')
-        .group(:user_id)
+        .group('users.id')
     end
   end
 end
