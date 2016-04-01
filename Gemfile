@@ -16,6 +16,9 @@ gem 'bcrypt', '~> 3.1.7'
 # For validating datetimes
 gem 'validates_timeliness'
 
+# Allow cross-origin AJAX requests
+gem 'rack-cors', require: 'rack/cors'
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
